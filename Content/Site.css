@@ -1,0 +1,47 @@
+﻿body {
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+.modeldiv{
+    position:fixed;
+    
+    
+    margin-bottom:auto;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    left:0;right:0;top:0;bottom:0;
+
+    background-color:#808080;
+}
+.modeldivsub {
+    position: absolute;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-shadow: 0px 0px 1px #808080;
+    background-color: white;
+    padding:1rem;
+    height:350px;
+    width:450px;
+}
+.form-group{
+    margin-bottom:1rem !important;
+}

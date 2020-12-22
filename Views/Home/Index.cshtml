@@ -1,0 +1,65 @@
+﻿
+<div ng-app="Homeapp">
+    <div ng-controller="homeController">
+        <h4>Students List</h4>
+        <hr />
+        <a href="~/home/addstudent" class="btn btn-primary float-xs-right" style="margin-bottom: 2rem;">Add More</a>
+        
+        <table class="table table-bordered" ng-hide="more" >
+            <tr>
+                <th></th>
+                <th>Name</th>
+          
+                <th></th>
+            </tr>
+            <tr ng-repeat="record in records">
+                <td>1</td>
+                <td>{{record.studentFirstName}} {{record.studentLastName}}</td>
+                
+                <td><input type="button" value="View" ng-click="viewMore()" /></td>
+            </tr>
+        </table>
+
+        <div ng-show="more" class="modeldiv">
+            <div class="modeldivsub">
+
+                <strong>Name: </strong><span>{{mordetails.studentFirstName}} {{mordetails.studentLastName}}</span><br />
+                <strong>Date of birth: </strong><span>{{mordetails.studentDOB}}</span><br />
+                <strong>Address: </strong><span>{{mordetails.Address}}</span><br />
+                <input type="button" value="Back" ng-click="back()" />
+            </div>
+           
+        </div>
+    </div>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script>
+        var app = angular.module("Homeapp", []);
+
+        app.controller("homeController", function ($scope, $http) {
+            $scope.record = []; $scope.mordetails = {};
+            var more = false;
+            $scope.getrepet = function () {
+                $http.get("/Home/getdata").then(function (d) {
+                    $scope.records = d.data;
+
+                }, function (error) {
+                    alert('Failed');
+                });
+
+            }
+            $scope.getrepet();
+            // Display
+
+            $scope.viewMore = function () {
+                $scope.more = true;
+                $scope.records.forEach(function (document) {
+                    $scope.mordetails = document;
+                })
+            }
+            $scope.back = function () {
+                $scope.more = false;
+            }
+        });
+    </script>
+</div>
+
